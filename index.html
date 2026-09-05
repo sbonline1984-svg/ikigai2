@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="as">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ikigai — জীৱনৰ প্ৰয়োজনীয়তাৰ অন্বেষণ</title>
+<style>
+  @font-face {
+    font-family: 'Samarkan Normal';
+    src: url('./fonts/Samarkan-Normal.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  :root {
+    --primary-color: #1f2937;
+    --secondary-color: #e9c46a;
+    --accent-color: #e9c46a;
+    --page-background: #faf7f2;
+    --card-background: #ffffff;
+    --body-text: #2b2b2b;
+    --muted-text: #777777;
+    --border-color: #e4ded4;
+    --shadow: 0 8px 24px rgba(31, 41, 55, 0.08);
+
+    --page-width: 1100px;
+    --card-radius: 14px;
+    --header-padding: 56px 20px 42px;
+    --content-gap: 28px;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'Noto Sans Bengali', 'Nirmala UI', Georgia, serif;
+    background: var(--page-background);
+    color: var(--body-text);
+    line-height: 1.8;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  header {
+    background:
+      linear-gradient(135deg, rgba(31, 41, 55, 0.96), rgba(17, 24, 39, 0.96)),
+      radial-gradient(circle at top right, rgba(233, 196, 106, 0.25), transparent 40%);
+    color: #fff;
+    text-align: center;
+    padding: var(--header-padding);
+    position: relative;
+    overflow: hidden;
+  }
+
+  header .logo {
+    font-family: 'Samarkan Normal', 'Samarkan', Georgia, serif;
+    font-size: 4rem;
+    font-weight: normal;
+    letter-spacing: 2px;
+    color: var(--accent-color);
+    line-height: 1.2;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.18);
+  }
+
+  header .meaning {
+    margin-top: 14px;
+    font-size: 1.05rem;
+    color: #f4f1ea;
+    font-style: italic;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  header .date {
+    margin-top: 14px;
+    font-size: 0.82rem;
+    color: #9aa0a6;
+  }
+
+  nav {
+    background: var(--secondary-color);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+    padding: 4px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  nav a {
+    color: var(--primary-color);
+    text-decoration: none;
+    padding: 12px 18px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.25s ease;
+  }
+
+  nav a:hover {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    transform: translateY(-2px);
+  }
+
+  .container {
+    max-width: var(--page-width);
+    margin: 42px auto;
+    padding: 0 22px;
+  }
+
+  .intro {
+    max-width: 850px;
+    margin: 0 auto 38px;
+    padding: 22px 26px;
+    text-align: center;
+    font-size: 1.05rem;
+    color: var(--muted-text);
+    background: rgba(255, 255, 255, 0.58);
+    border: 1px solid var(--border-color);
+    border-radius: var(--card-radius);
+  }
+
+  .featured {
+    margin-bottom: 45px;
+    padding: 26px;
+    background: var(--card-background);
+    border-radius: var(--card-radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+  }
+
+  .featured img {
+    width: 100%;
+    height: 330px;
+    object-fit: cover;
+    border-radius: 10px;
+    background: #ddd;
+  }
+
+  .featured h2 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin: 20px 0 8px;
+  }
+
+  .featured .meta {
+    font-size: 0.82rem;
+    color: #999;
+    margin-bottom: 12px;
+  }
+
+  .featured p {
+    font-size: 1rem;
+    color: #3d3d3d;
+    text-align: justify;
+  }
+
+  .section-title {
+    font-size: 1.45rem;
+    color: var(--primary-color);
+    margin: 45px 0 22px;
+    border-left: 5px solid var(--accent-color);
+    padding: 10px 0 10px 15px;
+  }
+
+  .essay {
+    background: var(--card-background);
+    border-radius: var(--card-radius);
+    padding: 26px;
+    margin-bottom: var(--content-gap);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .essay:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 32px rgba(31, 41, 55, 0.13);
+  }
+
+  .essay h3 {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+  }
+
+  .essay .meta {
+    font-size: 0.8rem;
+    color: #999;
+    margin-bottom: 12px;
+  }
+
+  .essay p {
+    font-size: 1rem;
+    color: #444;
+    text-align: justify;
+  }
+
+  .essay .tag {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 0.78rem;
+    background: color-mix(in srgb, var(--secondary-color) 25%, white);
+    color: #8a6422;
+    padding: 5px 12px;
+    border-radius: 20px;
+  }
+
+  footer {
+    background: var(--primary-color);
+    color: #c7cbd1;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 55px;
+    font-size: 0.85rem;
+  }
+
+  footer .foot-word {
+    color: var(--accent-color);
+    font-weight: 600;
+  }
+
+  .theme-toggle {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 20;
+    border: none;
+    border-radius: 25px;
+    padding: 11px 17px;
+    background: var(--primary-color);
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.2);
+    transition: 0.25s ease;
+  }
+
+  .theme-toggle:hover {
+    transform: scale(1.05);
+    background: var(--secondary-color);
+    color: var(--primary-color);
+  }
+
+  body.dark-mode {
+    --primary-color: #f1d48a;
+    --secondary-color: #2b3443;
+    --accent-color: #e9c46a;
+    --page-background: #111827;
+    --card-background: #1f2937;
+    --body-text: #f3f4f6;
+    --muted-text: #c5cad2;
+    --border-color: #374151;
+    --shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  }
+
+  body.dark-mode .essay p {
+    color: #d1d5db;
+  }
+
+  body.dark-mode .intro {
+    background: rgba(31, 41, 55, 0.7);
+  }
+
+  body.dark-mode .featured p {
+    color: #d1d5db;
+  }
+
+  @media (max-width: 768px) {
+    header {
+      padding: 38px 16px 30px;
+    }
+
+    header .logo {
+      font-size: 3rem;
+    }
+
+    header .meaning {
+      font-size: 0.92rem;
+    }
+
+    nav {
+      position: static;
+    }
+
+    nav a {
+      flex: 1 1 45%;
+      text-align: center;
+      padding: 10px 8px;
+      font-size: 0.85rem;
+    }
+
+    .container {
+      margin-top: 25px;
+      padding: 0 14px;
+    }
+
+    .featured,
+    .essay {
+      padding: 18px;
+    }
+
+    .featured img {
+      height: 220px;
+    }
+
+    .featured h2 {
+      font-size: 1.4rem;
+    }
+
+    .essay h3 {
+      font-size: 1.15rem;
+    }
+
+    .essay p {
+      text-align: left;
+      font-size: 0.95rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    header .logo {
+      font-size: 2.4rem;
+    }
+
+    nav a {
+      flex: 1 1 100%;
+    }
+
+    .theme-toggle {
+      right: 12px;
+      bottom: 12px;
+      font-size: 0.8rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Ikigai</div>
+  <div class="meaning">"ইকিগাইয়ে জীৱনত এটা উদ্দেশ্যৰ ভাবনা থকা আৰু ইয়াক সফল কৰিবলৈ অনুপ্ৰাণিত হোৱাক বুজায়" — জাপানী শব্দ</div>
+  <div class="date" id="today-date"></div>
+</header>
+
+<nav>
+  <a href="#">মুখ্য পৃষ্ঠা</a>
+  <a href="#">শিক্ষা</a>
+  <a href="#">জীৱন-দৰ্শন আৰু বিত্তীয় শিক্ষা</a>
+  <a href="#">জীৱন-দৰ্শন</a>
+  <a href="#">সাহিত্য</a>
+  <a href="#">সমাজ চিন্তা</a>
+  <a href="#">প্ৰকৃতি</a>
+  <a href="#">আত্ম-উপলব্ধি</a>
+</nav>
+
+<div class="container">
+
+  <p class="intro">এক প্ৰৱন্ধমূলক ডিজিটেল আলোচনী — ইয়াত আছে চিন্তা, অনুভৱ আৰু দৰ্শন। প্ৰতিখন লেখাই জীৱনৰ কোনো এটা দিশ চিনাকি কৰাব বিচাৰে।</p>
+
+  <div class="featured">
+    <img src="https://via.placeholder.com/800x400?text=প্ৰধান+প্ৰৱন্ধৰ+ছবি" alt="প্ৰধান প্ৰৱন্ধ">
+    <h2>ব্যৱসায়িক জগতত কৃত্ৰিম বুদ্ধিমত্তা (AI) আৰু মেচিন লাৰ্নিং (ML): এক গভীৰ বিশ্লেষণ</h2>
+    <div class="meta">Satyajit Bhuyan &nbsp;|&nbsp; পঢ়িবলৈ ৫ মিনিট</div>
+    <p>বৰ্তমান সময়ত কৃত্ৰিম বুদ্ধিমত্তা (Artificial Intelligence বা AI) আৰু মেচিন লাৰ্নিং (Machine Learning বা ML) ব্যৱসায়িক জগতৰ এক কেন্দ্ৰীয় অংশ হৈ পৰিছে, যিয়ে উদ্ভাৱনক ত্বৰান্বিত কৰাৰ লগতে দক্ষতা আৰু সৃজনশীলতা বৃদ্ধি কৰিছে. মেকিনচি (McKinsey)-ৰ এক প্ৰতিবেদন অনুসৰি, উৎপাদনশীলতাৰ ওপৰত জেনেৰেটিভ এআই (Generative AI বা Gen-AI)-ৰ প্ৰভাৱে গোলকীয় অৰ্থনীতিত কেইবা ট্ৰিলিয়ন ডলাৰ যোগ কৰাৰ ক্ষমতা ৰাখে. ইয়াৰ জৰিয়তে কৰ্মচাৰীসকলৰ ৬০-৭০% সময় অতিবাহিত কৰা কাৰ্যসমূহ স্বয়ংক্ৰিয় কৰাৰ সম্ভাৱনা আছে. জটিল সমস্যা সমাধান আৰু কাৰ্যপ্ৰণালীক সুশৃংখল কৰাৰ ক্ষমতা থকাৰ বাবে বৰ্তমান সময়ৰ সকলো পেছাদাৰীৰ বাবে এআই এক মৌলিক দক্ষতা হৈ পৰিছে.</p>
+  </div>
+
+  <h2 class="section-title">শেহতীয়া প্ৰৱন্ধসমূহ</h2>
+
+  <div class="essay">
+    <h3>৪০ বছৰ বয়সৰ পিছত বুজি পোৱা জীৱন আৰু শিক্ষা</h3>
+    <div class="meta">[০৩/০৯/২০২৬] &nbsp;|&nbsp; পঢ়িবলৈ ৪ মিনিট</div>
+    <p>মই এতিয়া ৪০ৰ ঘৰত আছোঁ। যদি এই ২০টা শিক্ষা মই আগেয়ে বুজি পালোঁহেঁতেন, তেন্তে হয়তো মোৰ জীৱনটো বহুত বেলেগ হ'লহেঁতেন। তলত এই শিক্ষাখিনি সহজ ভাষাত বুজাই দিয়া হ'ল, যাতে আপুনি সময় থাকোঁতেই ইয়াৰ পৰা কিবা শিকিব পাৰে।</p>
+    <span class="tag">শিক্ষা</span>
+  </div>
+
+  <div class="essay">
+    <h3>কম্পিউটাৰ কি?</h3>
+    <div class="meta">[০৩/০৯/২০২৬] &nbsp;|&nbsp; পঢ়িবলৈ ৬ মিনিট</div>
+    <p>কম্পিউটাৰ হৈছে এটা ইলেক্ট্ৰনিক যন্ত্ৰ যিয়ে প্ৰ'গ্ৰাম বা নিৰ্দেশাৱলী অনুসৰি তথ্য (data) গ্ৰহণ কৰে, প্ৰক্ৰিয়া কৰে, সংৰক্ষণ কৰে আৰু ফলাফল ওলিয়াই দিয়ে। সহজ ভাষাত ক'বলৈ গ'লে, কম্পিউটাৰে আমাৰ কঠিন আৰু দ্ৰুত গণনাৰ কামবোৰ মূহূৰ্ততে কৰি দিয়া এক শক্তিশালী সঁজুলি।</p>
+    <span class="tag">দৰ্শন</span>
+  </div>
+
+  <div class="essay">
+    <h3>ভৱিষ্যতৰ ৰূপৰেখা</h3>
+    <div class="meta">[০৫/০৯/২০২৬] &nbsp;|&nbsp; পঢ়িবলৈ ৬ মিনিট</div>
+    <p>জীৱনৰ স্থাপত্য: সাহস, সম্পদ আৰু মানসিক উৎকৰ্ষৰ এক গৱেষণামূলক দৰ্শন। মানৱীয় অস্তিত্বৰ উৎকৰ্ষক এক বহু মহলীয়া অট্টালিকাৰ স্থাপত্যৰ সৈতে তুলনা কৰিব পাৰি।</p>
+    <span class="tag">জীৱন-দৰ্শন আৰু বিত্তীয় শিক্ষা</span>
+  </div>
+
+  <div class="essay">
+    <h3>প্ৰৱন্ধৰ শিৰোনাম ৪</h3>
+    <div class="meta">[তাৰিখ] &nbsp;|&nbsp; পঢ়িবলৈ ৩ মিনিট</div>
+    <p>ইয়াত প্ৰৱন্ধটোৰ চমু অংশ লিখক। ব্যক্তিগত অভিজ্ঞতা, আত্ম-উপলব্ধি বা সমাজৰ সৈতে জড়িত চিন্তাধাৰা ইয়াত থাকিব পাৰে।</p>
+    <span class="tag">আত্ম-উপলব্ধি</span>
+  </div>
+
+</div>
+
+<footer>
+  <p><span class="foot-word">Ikigai</span> — &copy; <span id="year"></span> সকলো স্বত্ব সংৰক্ষিত</p>
+  <p style="margin-top:6px;">এইটো এটা নমুনা (টেমপ্লেট) ৱেবছাইট। প্ৰকৃত ব্যৱহাৰৰ বাবে ছবি, লিংক আৰু প্ৰৱন্ধৰ বিষয়বস্তু সলনি কৰক।</p>
+</footer>
+
+<button id="theme-toggle" class="theme-toggle">
+  🌙 Dark Mode
+</button>
+
+<script>
+  const dateEl = document.getElementById('today-date');
+  const yearEl = document.getElementById('year');
+  const today = new Date();
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  dateEl.textContent = today.toLocaleDateString('en-GB', options);
+  yearEl.textContent = today.getFullYear();
+
+  const themeToggle = document.getElementById('theme-toggle');
+
+  themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+
+    const darkModeEnabled =
+      document.body.classList.contains('dark-mode');
+
+    themeToggle.textContent = darkModeEnabled
+      ? '☀️ Light Mode'
+      : '🌙 Dark Mode';
+
+    localStorage.setItem('darkMode', darkModeEnabled);
+  });
+
+  if (localStorage.getItem('darkMode') === 'true') {
+    document.body.classList.add('dark-mode');
+    themeToggle.textContent = '☀️ Light Mode';
+  }
+</script>
+
+</body>
+</html>
