@@ -4,23 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ikigai — জীৱনৰ প্ৰয়োজনীয়তাৰ অন্বেষণ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Noto+Serif+Bengali:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-  --primary-color: #1f2937;
-  --secondary-color: #e9c46a;
-  --accent-color: #e9c46a;
-  --page-background: #faf7f2;
-  --card-background: #ffffff;
-  --body-text: #2b2b2b;
-  --muted-text: #777777;
-  --border-color: #e4ded4;
-  --shadow: 0 8px 24px rgba(31, 41, 55, 0.08);
 
-  --page-width: 1100px;
-  --card-radius: 14px;
-  --header-padding: 56px 20px 42px;
-  --content-gap: 28px;
-}
+  /* ---------- ফণ্ট ---------- */
   @font-face {
     font-family: 'Samarkan Normal';
     src: url('./fonts/Samarkan-Normal.ttf') format('truetype');
@@ -29,329 +18,528 @@
     font-display: swap;
   }
 
+  /* ---------- ডিজাইন টোকেন ---------- */
   :root {
-    --primary-color: #1f2937;
-    --secondary-color: #e9c46a;
-    --accent-color: #e9c46a;
-    --page-background: #faf7f2;
-    --card-background: #ffffff;
-    --body-text: #2b2b2b;
-    --muted-text: #777777;
-    --border-color: #e4ded4;
-    --shadow: 0 8px 24px rgba(31, 41, 55, 0.08);
+    --paper: #FBF7EE;
+    --paper-soft: #F3EDE0;
+    --ink: #241F19;
+    --ink-soft: #55503F ;
+    --ink-faint: #8D8672;
+    --rule: #DED4BC;
 
-    --page-width: 1100px;
-    --card-radius: 14px;
-    --header-padding: 56px 20px 42px;
-    --content-gap: 28px;
+    --gold: #B98A34;
+    --gold-soft: #E7CE95;
+    --navy: #24313F;
+
+    --c-essay: #2B4257;
+    --c-story: #7A3B33;
+    --c-poem: #3E5E45;
+    --c-philosophy: #5A3F60;
+    --c-society: #385170;
+    --c-nature: #4E6A45;
+    --c-self: #8A6422;
+
+    --card-radius: 4px;
+    --page-width: 1120px;
   }
 
   * { margin:0; padding:0; box-sizing:border-box; }
 
+  html { scroll-behavior: smooth; }
+
   body {
-    font-family: 'Noto Sans Bengali', 'Nirmala UI', Georgia, serif;
-    background: var(--page-background);
-    color: var(--body-text);
-    line-height: 1.8;
+    font-family: 'Noto Serif Bengali', 'Noto Sans Bengali', 'Nirmala UI', Georgia, serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.85;
     transition: background 0.3s ease, color 0.3s ease;
   }
 
-  header {
-    background:
-      linear-gradient(135deg, rgba(31, 41, 55, 0.96), rgba(17, 24, 39, 0.96)),
-      radial-gradient(circle at top right, rgba(233, 196, 106, 0.25), transparent 40%);
-    color: #fff;
-    text-align: center;
-    padding: var(--header-padding);
-    position: relative;
-    overflow: hidden;
+  h1, h2, h3, h4, .sans {
+    font-family: 'Noto Sans Bengali', 'Nirmala UI', sans-serif;
   }
 
- header .logo {
-  font-family: 'Samarkan Normal', 'Samarkan', Georgia, serif;
-  font-size: 4rem;
-  font-weight: normal;
-  letter-spacing: 2px;
-  color: var(--accent-color);
-  line-height: 1.2;
-  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.18);
-}
+  a { color: inherit; }
+
+  /* ---------- হেডাৰ ---------- */
+  header {
+    background:
+      radial-gradient(circle at 15% 20%, rgba(185, 138, 52, 0.16), transparent 45%),
+      radial-gradient(circle at 85% 80%, rgba(185, 138, 52, 0.14), transparent 50%),
+      linear-gradient(160deg, #FDFAF3 0%, #F6EDD9 55%, #F1E2BC 100%);
+    color: var(--ink);
+    text-align: center;
+    padding: 68px 20px 50px;
+    position: relative;
+    border-bottom: 1px solid var(--gold-soft);
+    box-shadow: 0 2px 18px rgba(185, 138, 52, 0.12);
+  }
+
+  header .logo {
+    font-family: 'Playfair Display', 'Samarkan Normal', Georgia, serif;
+    font-size: 4.1rem;
+    font-weight: 700;
+    font-style: italic;
+    letter-spacing: 1px;
+    color: var(--gold);
+    line-height: 1.15;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.6);
+  }
 
   header .meaning {
-    margin-top: 14px;
-    font-size: 1.05rem;
-    color: #f4f1ea;
+    margin-top: 18px;
+    font-size: 1.02rem;
+    color: var(--ink-soft);
     font-style: italic;
-    max-width: 750px;
+    max-width: 720px;
     margin-left: auto;
     margin-right: auto;
   }
 
   header .date {
-    margin-top: 14px;
-    font-size: 0.82rem;
-    color: #9aa0a6;
+    margin-top: 16px;
+    font-size: 0.8rem;
+    letter-spacing: 0.4px;
+    color: var(--ink-faint);
   }
 
-  nav {
-    background: var(--secondary-color);
+  /* ---------- সূচী নেভিগেচন ---------- */
+  nav.toc-nav {
+    background: var(--paper-soft);
+    border-bottom: 1px solid var(--rule);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 4px;
+    gap: 2px;
     padding: 4px;
     position: sticky;
     top: 0;
     z-index: 10;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
   }
 
-  nav a {
-    color: var(--primary-color);
+  nav.toc-nav a {
     text-decoration: none;
-    padding: 12px 18px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    border-radius: 8px;
-    transition: all 0.25s ease;
+    color: var(--ink-soft);
+    padding: 12px 16px;
+    font-size: 0.88rem;
+    font-family: 'Noto Sans Bengali', sans-serif;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
   }
 
-  nav a:hover {
-    background: var(--primary-color);
-    color: var(--secondary-color);
-    transform: translateY(-2px);
+  nav.toc-nav a:hover {
+    color: var(--ink);
+    border-bottom-color: var(--gold);
   }
 
   .container {
     max-width: var(--page-width);
-    margin: 42px auto;
+    margin: 0 auto;
     padding: 0 22px;
   }
 
   .intro {
-    max-width: 850px;
-    margin: 0 auto 38px;
-    padding: 22px 26px;
+    max-width: 760px;
+    margin: 44px auto 0;
     text-align: center;
     font-size: 1.05rem;
-    color: var(--muted-text);
-    background: rgba(255, 255, 255, 0.58);
-    border: 1px solid var(--border-color);
-    border-radius: var(--card-radius);
+    color: var(--ink-soft);
   }
 
+  /* ---------- বৈশিষ্ট্যযুক্ত প্ৰৱন্ধ ---------- */
   .featured {
-    margin-bottom: 45px;
-    padding: 26px;
-    background: var(--card-background);
-    border-radius: var(--card-radius);
-    box-shadow: var(--shadow);
-    border: 1px solid var(--border-color);
+    margin: 40px 0 56px;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 34px;
+    align-items: stretch;
+    background: #fff;
+    border: 1px solid var(--rule);
   }
 
   .featured img {
     width: 100%;
-    height: 330px;
+    height: 100%;
+    min-height: 300px;
     object-fit: cover;
-    border-radius: 10px;
     background: #ddd;
   }
 
+  .featured .featured-body {
+    padding: 30px 34px 30px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .featured .eyebrow {
+    font-family: 'Noto Sans Bengali', sans-serif;
+    font-size: 0.78rem;
+    color: var(--c-essay);
+    margin-bottom: 10px;
+  }
+
   .featured h2 {
-    font-size: 1.8rem;
-    color: var(--primary-color);
-    margin: 20px 0 8px;
+    font-size: 1.7rem;
+    line-height: 1.4;
+    margin-bottom: 10px;
   }
 
   .featured .meta {
-    font-size: 0.82rem;
-    color: #999;
-    margin-bottom: 12px;
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+    margin-bottom: 14px;
   }
 
   .featured p {
-    font-size: 1rem;
-    color: #3d3d3d;
+    font-size: 0.98rem;
+    color: var(--ink-soft);
     text-align: justify;
   }
 
-  .section-title {
-    font-size: 1.45rem;
-    color: var(--primary-color);
-    margin: 45px 0 22px;
-    border-left: 5px solid var(--accent-color);
-    padding: 10px 0 10px 15px;
+  /* ---------- সূচিপত্ৰ কাৰ্ড ---------- */
+  .contents-card {
+    margin: 0 0 60px;
+    border: 1px solid var(--ink);
+    padding: 38px 40px;
   }
 
-  .essay {
-    background: var(--card-background);
-    border-radius: var(--card-radius);
-    padding: 26px;
-    margin-bottom: var(--content-gap);
-    box-shadow: var(--shadow);
-    border: 1px solid var(--border-color);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  .contents-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 6px;
   }
 
-  .essay:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 14px 32px rgba(31, 41, 55, 0.13);
+  .contents-card .sub {
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+    margin-bottom: 24px;
   }
 
-  .essay h3 {
-    font-size: 1.3rem;
-    color: var(--primary-color);
-    margin-bottom: 8px;
+  .contents-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 40px;
   }
 
-  .essay .meta {
-    font-size: 0.8rem;
-    color: #999;
+  .contents-list ol {
+    list-style: none;
+    counter-reset: toc;
+  }
+
+  .contents-list li {
+    counter-increment: toc;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 11px 0;
+    border-bottom: 1px dotted var(--rule);
+  }
+
+  .contents-list li::before {
+    content: counter(toc, decimal-leading-zero);
+    font-family: 'Noto Sans Bengali', sans-serif;
+    font-size: 0.72rem;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .contents-list a {
+    text-decoration: none;
+    font-size: 0.95rem;
+    color: var(--ink);
+  }
+
+  .contents-list a:hover { color: var(--gold); }
+
+  .contents-list .cat {
+    display: block;
+    font-family: 'Noto Sans Bengali', sans-serif;
+    font-size: 0.7rem;
+    color: var(--ink-faint);
+    margin-top: 2px;
+  }
+
+  /* ---------- বিভাগ শীৰ্ষক ---------- */
+  .section-block {
+    margin: 0 0 64px;
+    scroll-margin-top: 60px;
+  }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 28px;
+    border-top: 1px solid var(--ink);
+    padding-top: 14px;
+  }
+
+  .section-head h2 {
+    font-size: 1.4rem;
+  }
+
+  .section-head .count {
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+    font-family: 'Noto Sans Bengali', sans-serif;
+  }
+
+  /* ---------- প্ৰৱন্ধ কাৰ্ড (essay grid) ---------- */
+  .essay-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+  }
+
+  .essay-card {
+    background: #fff;
+    border: 1px solid var(--rule);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .essay-card .tag {
+    align-self: flex-start;
+    font-family: 'Noto Sans Bengali', sans-serif;
+    font-size: 0.7rem;
+    color: #fff;
+    background: var(--c-essay);
+    padding: 3px 10px;
+    margin-bottom: 14px;
+  }
+
+  .essay-card h3 {
+    font-size: 1.12rem;
+    margin-bottom: 10px;
+  }
+
+  .essay-card .meta {
+    font-size: 0.76rem;
+    color: var(--ink-faint);
     margin-bottom: 12px;
   }
 
-  .essay p {
-    font-size: 1rem;
-    color: #444;
+  .essay-card p {
+    font-size: 0.93rem;
+    color: var(--ink-soft);
     text-align: justify;
   }
 
-  .essay .tag {
-    display: inline-block;
-    margin-top: 16px;
-    font-size: 0.78rem;
-    background: color-mix(in srgb, var(--secondary-color) 25%, white);
-    color: #8a6422;
-    padding: 5px 12px;
-    border-radius: 20px;
+  /* ---------- গল্প (drop cap দুই স্তম্ভ) ---------- */
+  .story-piece {
+    background: #fff;
+    border: 1px solid var(--rule);
+    padding: 40px 44px;
   }
 
-  footer {
-    background: var(--primary-color);
-    color: #c7cbd1;
+  .story-piece .tag {
+    font-family: 'Noto Sans Bengali', sans-serif;
+    font-size: 0.7rem;
+    color: #fff;
+    background: var(--c-story);
+    padding: 3px 10px;
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+
+  .story-piece h3 {
+    font-size: 1.5rem;
+    margin-bottom: 6px;
+  }
+
+  .story-piece .meta {
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+    margin-bottom: 20px;
+  }
+
+  .story-piece .body-text {
+    column-count: 2;
+    column-gap: 40px;
+    text-align: justify;
+    font-size: 0.98rem;
+    color: var(--ink-soft);
+  }
+
+  .story-piece .body-text p:first-child::first-letter {
+    font-family: 'Noto Sans Bengali', sans-serif;
+    font-size: 3.1rem;
+    line-height: 0.75;
+    float: left;
+    padding: 6px 8px 0 0;
+    color: var(--c-story);
+  }
+
+  .story-piece .body-text p { margin-bottom: 14px; }
+
+  /* ---------- কবিতা ---------- */
+  .poem-piece {
+    background: var(--paper-soft);
+    border-left: 4px solid var(--c-poem);
+    padding: 40px 48px;
     text-align: center;
-    padding: 30px 20px;
-    margin-top: 55px;
+  }
+
+  .poem-piece .tag {
+    font-family: 'Noto Sans Bengali', sans-serif;
+    font-size: 0.7rem;
+    color: #fff;
+    background: var(--c-poem);
+    padding: 3px 10px;
+    display: inline-block;
+    margin-bottom: 18px;
+  }
+
+  .poem-piece h3 {
+    font-size: 1.45rem;
+    margin-bottom: 6px;
+  }
+
+  .poem-piece .meta {
+    font-size: 0.76rem;
+    color: var(--ink-faint);
+    margin-bottom: 26px;
+  }
+
+  .poem-piece .stanza {
+    font-size: 1.08rem;
+    font-style: italic;
+    color: var(--ink);
+    max-width: 480px;
+    margin: 0 auto 26px;
+  }
+
+  .poem-piece .stanza p { margin-bottom: 4px; }
+
+  /* ---------- দৰ্শন / সমাজ চিন্তা / প্ৰকৃতি / আত্ম-উপলব্ধি — উদ্ধৃতি ধাচ ---------- */
+  .reflect-piece {
+    border-left: 4px solid var(--accent, var(--gold));
+    padding: 6px 0 6px 30px;
+  }
+
+  .reflect-piece .tag {
+    font-family: 'Noto Sans Bengali', sans-serif;
+    font-size: 0.7rem;
+    color: #fff;
+    padding: 3px 10px;
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+
+  .reflect-piece h3 {
+    font-size: 1.35rem;
+    margin-bottom: 6px;
+  }
+
+  .reflect-piece .meta {
+    font-size: 0.76rem;
+    color: var(--ink-faint);
+    margin-bottom: 16px;
+  }
+
+  .reflect-piece p {
+    font-size: 1rem;
+    color: var(--ink-soft);
+    max-width: 700px;
+    text-align: justify;
+  }
+
+  .reflect-piece.philosophy { --accent: var(--c-philosophy); }
+  .reflect-piece.society    { --accent: var(--c-society); }
+  .reflect-piece.nature     { --accent: var(--c-nature); }
+  .reflect-piece.self       { --accent: var(--c-self); }
+
+  .reflect-piece.philosophy .tag { background: var(--c-philosophy); }
+  .reflect-piece.society .tag    { background: var(--c-society); }
+  .reflect-piece.nature .tag     { background: var(--c-nature); }
+  .reflect-piece.self .tag       { background: var(--c-self); }
+
+  /* ---------- ফুটাৰ ---------- */
+  footer {
+    background: var(--paper-soft);
+    border-top: 1px solid var(--gold-soft);
+    color: var(--ink-soft);
+    text-align: center;
+    padding: 34px 20px;
+    margin-top: 20px;
     font-size: 0.85rem;
   }
 
   footer .foot-word {
-    color: var(--accent-color);
-    font-weight: 600;
+    color: var(--gold);
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
   }
 
+  /* ---------- থিম টগল ---------- */
   .theme-toggle {
     position: fixed;
     right: 18px;
     bottom: 18px;
     z-index: 20;
-    border: none;
-    border-radius: 25px;
-    padding: 11px 17px;
-    background: var(--primary-color);
-    color: #fff;
+    border: 1px solid var(--ink);
+    border-radius: 2px;
+    padding: 10px 16px;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Sans Bengali', sans-serif;
+    font-size: 0.82rem;
     cursor: pointer;
-    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.2);
-    transition: 0.25s ease;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
   }
 
   .theme-toggle:hover {
-    transform: scale(1.05);
-    background: var(--secondary-color);
-    color: var(--primary-color);
+    background: var(--gold);
+    color: #fff;
+    border-color: var(--gold);
   }
 
+  /* ---------- ডাৰ্ক মোড ---------- */
   body.dark-mode {
-    --primary-color: #f1d48a;
-    --secondary-color: #2b3443;
-    --accent-color: #e9c46a;
-    --page-background: #111827;
-    --card-background: #1f2937;
-    --body-text: #f3f4f6;
-    --muted-text: #c5cad2;
-    --border-color: #374151;
-    --shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    --paper: #17191C;
+    --paper-soft: #1F2225;
+    --ink: #EDE7D9;
+    --ink-soft: #C7C1B2;
+    --ink-faint: #837D6C;
+    --rule: #34383C;
   }
 
-  body.dark-mode .essay p {
-    color: #d1d5db;
+  body.dark-mode .featured,
+  body.dark-mode .essay-card,
+  body.dark-mode .story-piece {
+    background: #1F2225;
   }
 
-  body.dark-mode .intro {
-    background: rgba(31, 41, 55, 0.7);
+  body.dark-mode nav.toc-nav {
+    background: #1F2225;
   }
 
-  body.dark-mode .featured p {
-    color: #d1d5db;
+  body.dark-mode .theme-toggle {
+    background: #1F2225;
+    color: var(--ink);
+    border-color: var(--rule);
   }
 
-  @media (max-width: 768px) {
-    header {
-      padding: 38px 16px 30px;
-    }
-
-    header .logo {
-      font-size: 3rem;
-    }
-
-    header .meaning {
-      font-size: 0.92rem;
-    }
-
-    nav {
-      position: static;
-    }
-
-    nav a {
-      flex: 1 1 45%;
-      text-align: center;
-      padding: 10px 8px;
-      font-size: 0.85rem;
-    }
-
-    .container {
-      margin-top: 25px;
-      padding: 0 14px;
-    }
-
-    .featured,
-    .essay {
-      padding: 18px;
-    }
-
-    .featured img {
-      height: 220px;
-    }
-
-    .featured h2 {
-      font-size: 1.4rem;
-    }
-
-    .essay h3 {
-      font-size: 1.15rem;
-    }
-
-    .essay p {
-      text-align: left;
-      font-size: 0.95rem;
-    }
+  /* ---------- সাৰাংশ ---------- */
+  @media (max-width: 900px) {
+    .featured { grid-template-columns: 1fr; }
+    .featured .featured-body { padding: 26px; }
+    .essay-grid { grid-template-columns: 1fr; }
+    .contents-list { grid-template-columns: 1fr; }
+    .story-piece .body-text { column-count: 1; }
   }
 
-  @media (max-width: 480px) {
-    header .logo {
-      font-size: 2.4rem;
-    }
-
-    nav a {
-      flex: 1 1 100%;
-    }
-
-    .theme-toggle {
-      right: 12px;
-      bottom: 12px;
-      font-size: 0.8rem;
-    }
+  @media (max-width: 640px) {
+    header { padding: 46px 16px 34px; }
+    header .logo { font-size: 2.9rem; }
+    header .meaning { font-size: 0.9rem; }
+    .contents-card { padding: 26px 22px; }
+    .story-piece { padding: 26px; }
+    .poem-piece { padding: 30px 26px; }
+    .theme-toggle { right: 12px; bottom: 12px; }
   }
+
 </style>
 </head>
 <body>
@@ -362,56 +550,183 @@
   <div class="date" id="today-date"></div>
 </header>
 
-<nav>
-  <a href="#">মুখ্য পৃষ্ঠা</a>
-  <a href="#">শিক্ষা</a>
-  <a href="#">জীৱন-দৰ্শন আৰু বিত্তীয় শিক্ষা</a>
-  <a href="#">জীৱন-দৰ্শন</a>
-  <a href="#">সাহিত্য</a>
-  <a href="#">সমাজ চিন্তা</a>
-  <a href="#">প্ৰকৃতি</a>
-  <a href="#">আত্ম-উপলব্ধি</a>
+<nav class="toc-nav">
+  <a href="#featured">মুখ্য কথা</a>
+  <a href="#contents">সূচিপত্ৰ</a>
+  <a href="#essays">প্ৰবন্ধ</a>
+  <a href="#story">গল্প</a>
+  <a href="#poem">কবিতা</a>
+  <a href="#philosophy">জীৱন-দৰ্শন</a>
+  <a href="#society">সমাজ চিন্তা</a>
+  <a href="#nature">প্ৰকৃতি</a>
+  <a href="#self">আত্ম-উপলব্ধি</a>
 </nav>
 
 <div class="container">
 
   <p class="intro">এক প্ৰৱন্ধমূলক ডিজিটেল আলোচনী — ইয়াত আছে চিন্তা, অনুভৱ আৰু দৰ্শন। প্ৰতিখন লেখাই জীৱনৰ কোনো এটা দিশ চিনাকি কৰাব বিচাৰে।</p>
 
-  <div class="featured">
-    <img src="https://via.placeholder.com/800x400?text=প্ৰধান+প্ৰৱন্ধৰ+ছবি" alt="প্ৰধান প্ৰৱন্ধ">
-    <h2>ব্যৱসায়িক জগতত কৃত্ৰিম বুদ্ধিমত্তা (AI) আৰু মেচিন লাৰ্নিং (ML): এক গভীৰ বিশ্লেষণ</h2>
-    <div class="meta">Satyajit Bhuyan &nbsp;|&nbsp; পঢ়িবলৈ ৫ মিনিট</div>
-    <p>বৰ্তমান সময়ত কৃত্ৰিম বুদ্ধিমত্তা (Artificial Intelligence বা AI) আৰু মেচিন লাৰ্নিং (Machine Learning বা ML) ব্যৱসায়িক জগতৰ এক কেন্দ্ৰীয় অংশ হৈ পৰিছে, যিয়ে উদ্ভাৱনক ত্বৰান্বিত কৰাৰ লগতে দক্ষতা আৰু সৃজনশীলতা বৃদ্ধি কৰিছে. মেকিনচি (McKinsey)-ৰ এক প্ৰতিবেদন অনুসৰি, উৎপাদনশীলতাৰ ওপৰত জেনেৰেটিভ এআই (Generative AI বা Gen-AI)-ৰ প্ৰভাৱে গোলকীয় অৰ্থনীতিত কেইবা ট্ৰিলিয়ন ডলাৰ যোগ কৰাৰ ক্ষমতা ৰাখে. ইয়াৰ জৰিয়তে কৰ্মচাৰীসকলৰ ৬০-৭০% সময় অতিবাহিত কৰা কাৰ্যসমূহ স্বয়ংক্ৰিয় কৰাৰ সম্ভাৱনা আছে. জটিল সমস্যা সমাধান আৰু কাৰ্যপ্ৰণালীক সুশৃংখল কৰাৰ ক্ষমতা থকাৰ বাবে বৰ্তমান সময়ৰ সকলো পেছাদাৰীৰ বাবে এআই এক মৌলিক দক্ষতা হৈ পৰিছে.</p>
+  <!-- ============ বৈশিষ্ট্যযুক্ত প্ৰৱন্ধ ============ -->
+  <div class="featured" id="featured">
+    <img src="https://via.placeholder.com/800x600?text=প্ৰধান+প্ৰৱন্ধৰ+ছবি" alt="প্ৰধান প্ৰৱন্ধ">
+    <div class="featured-body">
+      <div class="eyebrow">প্ৰবন্ধ · এই সংখ্যাৰ মুখ্য লেখা</div>
+      <h2>ব্যৱসায়িক জগতত কৃত্ৰিম বুদ্ধিমত্তা (AI) আৰু মেচিন লাৰ্নিং (ML): এক গভীৰ বিশ্লেষণ</h2>
+      <div class="meta">Satyajit Bhuyan &nbsp;|&nbsp; পঢ়িবলৈ ৫ মিনিট</div>
+      <p>বৰ্তমান সময়ত কৃত্ৰিম বুদ্ধিমত্তা (Artificial Intelligence বা AI) আৰু মেচিন লাৰ্নিং (Machine Learning বা ML) ব্যৱসায়িক জগতৰ এক কেন্দ্ৰীয় অংশ হৈ পৰিছে, যিয়ে উদ্ভাৱনক ত্বৰান্বিত কৰাৰ লগতে দক্ষতা আৰু সৃজনশীলতা বৃদ্ধি কৰিছে। মেকিনচি (McKinsey)-ৰ এক প্ৰতিবেদন অনুসৰি, উৎপাদনশীলতাৰ ওপৰত জেনেৰেটিভ এআই-ৰ প্ৰভাৱে গোলকীয় অৰ্থনীতিত কেইবা ট্ৰিলিয়ন ডলাৰ যোগ কৰাৰ ক্ষমতা ৰাখে।</p>
+    </div>
   </div>
 
-  <h2 class="section-title">শেহতীয়া প্ৰৱন্ধসমূহ</h2>
-
-  <div class="essay">
-    <h3>৪০ বছৰ বয়সৰ পিছত বুজি পোৱা জীৱন আৰু শিক্ষা</h3>
-    <div class="meta">[০৩/০৯/২০২৬] &nbsp;|&nbsp; পঢ়িবলৈ ৪ মিনিট</div>
-    <p>মই এতিয়া ৪০ৰ ঘৰত আছোঁ। যদি এই ২০টা শিক্ষা মই আগেয়ে বুজি পালোঁহেঁতেন, তেন্তে হয়তো মোৰ জীৱনটো বহুত বেলেগ হ'লহেঁতেন। তলত এই শিক্ষাখিনি সহজ ভাষাত বুজাই দিয়া হ'ল, যাতে আপুনি সময় থাকোঁতেই ইয়াৰ পৰা কিবা শিকিব পাৰে।</p>
-    <span class="tag">শিক্ষা</span>
+  <!-- ============ সূচিপত্ৰ ============ -->
+  <div class="contents-card" id="contents">
+    <h2>সূচিপত্ৰ</h2>
+    <div class="sub">এই সংখ্যাত সামৰি লোৱা সকলো লেখাৰ তালিকা</div>
+    <div class="contents-list">
+      <ol>
+        <li><a href="#essays">৪০ বছৰ বয়সৰ পিছত বুজি পোৱা জীৱন আৰু শিক্ষা<span class="cat">প্ৰবন্ধ</span></a></li>
+        <li><a href="#essays">কম্পিউটাৰ কি?<span class="cat">প্ৰবন্ধ</span></a></li>
+        <li><a href="#essays">ভৱিষ্যতৰ ৰূপৰেখা<span class="cat">প্ৰবন্ধ</span></a></li>
+        <li><a href="#story">শেষ ৰাতিৰ চিঠি<span class="cat">গল্প</span></a></li>
+      </ol>
+      <ol start="5">
+        <li><a href="#poem">মাটিৰ গান<span class="cat">কবিতা</span></a></li>
+        <li><a href="#philosophy">মৌনতাৰ মূল্য<span class="cat">জীৱন-দৰ্শন</span></a></li>
+        <li><a href="#society">প্ৰতিবেশীৰ প্ৰশ্ন<span class="cat">সমাজ চিন্তা</span></a></li>
+        <li><a href="#nature">নদীৰ কাষত সময়<span class="cat">প্ৰকৃতি</span></a></li>
+        <li><a href="#self">নিজৰ মাজত হেৰোৱা যাত্ৰা<span class="cat">আত্ম-উপলব্ধি</span></a></li>
+      </ol>
+    </div>
   </div>
 
-  <div class="essay">
-    <h3>কম্পিউটাৰ কি?</h3>
-    <div class="meta">[০৩/০৯/২০২৬] &nbsp;|&nbsp; পঢ়িবলৈ ৬ মিনিট</div>
-    <p>কম্পিউটাৰ হৈছে এটা ইলেক্ট্ৰনিক যন্ত্ৰ যিয়ে প্ৰ'গ্ৰাম বা নিৰ্দেশাৱলী অনুসৰি তথ্য (data) গ্ৰহণ কৰে, প্ৰক্ৰিয়া কৰে, সংৰক্ষণ কৰে আৰু ফলাফল ওলিয়াই দিয়ে। সহজ ভাষাত ক'বলৈ গ'লে, কম্পিউটাৰে আমাৰ কঠিন আৰু দ্ৰুত গণনাৰ কামবোৰ মূহূৰ্ততে কৰি দিয়া এক শক্তিশালী সঁজুলি।</p>
-    <span class="tag">দৰ্শন</span>
+  <!-- ============ প্ৰবন্ধ ============ -->
+  <div class="section-block" id="essays">
+    <div class="section-head">
+      <h2>প্ৰবন্ধ</h2>
+      <span class="count">৩ টা লেখা</span>
+    </div>
+    <div class="essay-grid">
+
+      <div class="essay-card">
+        <span class="tag">প্ৰবন্ধ</span>
+        <h3>৪০ বছৰ বয়সৰ পিছত বুজি পোৱা জীৱন আৰু শিক্ষা</h3>
+        <div class="meta">০৩/০৯/২০২৬ &nbsp;|&nbsp; পঢ়িবলৈ ৪ মিনিট</div>
+        <p>মই এতিয়া ৪০ৰ ঘৰত আছোঁ। যদি এই ২০টা শিক্ষা মই আগেয়ে বুজি পালোঁহেঁতেন, তেন্তে হয়তো মোৰ জীৱনটো বহুত বেলেগ হ'লহেঁতেন। তলত এই শিক্ষাখিনি সহজ ভাষাত বুজাই দিয়া হ'ল।</p>
+      </div>
+
+      <div class="essay-card">
+        <span class="tag">প্ৰবন্ধ</span>
+        <h3>কম্পিউটাৰ কি?</h3>
+        <div class="meta">০৩/০৯/২০২৬ &nbsp;|&nbsp; পঢ়িবলৈ ৬ মিনিট</div>
+        <p>কম্পিউটাৰ হৈছে এটা ইলেক্ট্ৰনিক যন্ত্ৰ যিয়ে প্ৰ'গ্ৰাম বা নিৰ্দেশাৱলী অনুসৰি তথ্য গ্ৰহণ কৰে, প্ৰক্ৰিয়া কৰে, সংৰক্ষণ কৰে আৰু ফলাফল ওলিয়াই দিয়ে।</p>
+      </div>
+
+      <div class="essay-card">
+        <span class="tag">প্ৰবন্ধ</span>
+        <h3>ভৱিষ্যতৰ ৰূপৰেখা</h3>
+        <div class="meta">০৫/০৯/২০২৬ &nbsp;|&nbsp; পঢ়িবলৈ ৬ মিনিট</div>
+        <p>জীৱনৰ স্থাপত্য: সাহস, সম্পদ আৰু মানসিক উৎকৰ্ষৰ এক গৱেষণামূলক দৰ্শন। মানৱীয় অস্তিত্বৰ উৎকৰ্ষক এক বহু মহলীয়া অট্টালিকাৰ স্থাপত্যৰ সৈতে তুলনা কৰিব পাৰি।</p>
+      </div>
+
+    </div>
   </div>
 
-  <div class="essay">
-    <h3>ভৱিষ্যতৰ ৰূপৰেখা</h3>
-    <div class="meta">[০৫/০৯/২০২৬] &nbsp;|&nbsp; পঢ়িবলৈ ৬ মিনিট</div>
-    <p>জীৱনৰ স্থাপত্য: সাহস, সম্পদ আৰু মানসিক উৎকৰ্ষৰ এক গৱেষণামূলক দৰ্শন। মানৱীয় অস্তিত্বৰ উৎকৰ্ষক এক বহু মহলীয়া অট্টালিকাৰ স্থাপত্যৰ সৈতে তুলনা কৰিব পাৰি।</p>
-    <span class="tag">জীৱন-দৰ্শন আৰু বিত্তীয় শিক্ষা</span>
+  <!-- ============ গল্প ============ -->
+  <div class="section-block" id="story">
+    <div class="section-head">
+      <h2>গল্প</h2>
+      <span class="count">১ টা লেখা</span>
+    </div>
+    <div class="story-piece">
+      <span class="tag">গল্প</span>
+      <h3>শেষ ৰাতিৰ চিঠি</h3>
+      <div class="meta">লিখক অজ্ঞাত &nbsp;|&nbsp; পঢ়িবলৈ ৩ মিনিট</div>
+      <div class="body-text">
+        <p>ৰাতিপুৱাৰ ট্ৰেইনখন ধৰিবলৈ এতিয়াও তিনি ঘণ্টা বাকী আছিল, কিন্তু নিলয়ৰ চকুত টোপনি নাছিল। তেওঁ টেবুলৰ ওচৰত বহি এখন খালী কাগজলৈ চাই আছিল, যেন সি নিজেই কিবা কথা কম বুলি ৰৈ আছে।</p>
+        <p>বহু বছৰৰ আগতে তেওঁৰ দেউতাকে কৈছিল, "যি কথা মুখেৰে ক'ব নোৱাৰা, সেয়া কাগজত লিখি থোৱা — কাগজে কেতিয়াও উত্তৰ নিদিয়ে, কিন্তু সদায় শুনি থাকে।" আজি প্ৰথমবাৰৰ বাবে নিলয়ে সেই কথাষাৰৰ প্ৰকৃত অৰ্থ বুজি পালে।</p>
+        <p>তেওঁ কলমটো উলিয়ালে। প্ৰথম শাৰীটো লিখিবলৈ যিমান সময় লাগিছিল, বাকী গোটেই চিঠিখন লিখিবলৈ তাতোকৈ কম সময় লাগিল। কিয়নো এবাৰ আৰম্ভ কৰাৰ পিছত, কথাবোৰ নিজেই বাট বিচাৰি ওলাই আহিছিল।</p>
+      </div>
+    </div>
   </div>
 
-  <div class="essay">
-    <h3>প্ৰৱন্ধৰ শিৰোনাম ৪</h3>
-    <div class="meta">[তাৰিখ] &nbsp;|&nbsp; পঢ়িবলৈ ৩ মিনিট</div>
-    <p>ইয়াত প্ৰৱন্ধটোৰ চমু অংশ লিখক। ব্যক্তিগত অভিজ্ঞতা, আত্ম-উপলব্ধি বা সমাজৰ সৈতে জড়িত চিন্তাধাৰা ইয়াত থাকিব পাৰে।</p>
-    <span class="tag">আত্ম-উপলব্ধি</span>
+  <!-- ============ কবিতা ============ -->
+  <div class="section-block" id="poem">
+    <div class="section-head">
+      <h2>কবিতা</h2>
+      <span class="count">১ টা লেখা</span>
+    </div>
+    <div class="poem-piece">
+      <span class="tag">কবিতা</span>
+      <h3>মাটিৰ গান</h3>
+      <div class="meta">কবি অজ্ঞাত</div>
+      <div class="stanza">
+        <p>পুৱাৰ কুঁৱলীয়ে ছুই যায় পাতৰ কাষে,</p>
+        <p>নিজৰাৰ পানী বৈ যায় অজান কোনো দেশে।</p>
+        <p>মই বহি থাকোঁ মাটিৰ কাষত নিজমে,</p>
+        <p>শুনো সময়ৰ কথা, নিজৰে নিজৰ ভাষে।</p>
+      </div>
+      <div class="stanza">
+        <p>জীৱনৰ প্ৰতিটো ক্ষণ এটা নতুন পাঠ,</p>
+        <p>আজি যি হেৰাল, কালি হয়তো পাব এক নতুন ঘাট।</p>
+        <p>মই বিচাৰোঁ নাই মহৎ একো সন্ধান,</p>
+        <p>কেৱল বিচাৰোঁ নিজৰ মাজত নিজৰ স্থান।</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ জীৱন-দৰ্শন ============ -->
+  <div class="section-block" id="philosophy">
+    <div class="section-head">
+      <h2>জীৱন-দৰ্শন</h2>
+      <span class="count">১ টা লেখা</span>
+    </div>
+    <div class="reflect-piece philosophy">
+      <span class="tag">জীৱন-দৰ্শন</span>
+      <h3>মৌনতাৰ মূল্য</h3>
+      <div class="meta">পঢ়িবলৈ ৩ মিনিট</div>
+      <p>আমি প্ৰতিদিনে কথাৰে আগুৰি থাকোঁ, কিন্তু মৌন হৈ থকাৰ সাহস কমেইহে দেখুৱাওঁ। মৌনতা মানে শূন্যতা নহয় — ই এক প্ৰকাৰৰ শুনা, য'ত আমি নিজৰ চিন্তাবোৰক প্ৰথমবাৰৰ বাবে স্পষ্টকৈ শুনিব পাৰোঁ। যেতিয়া আমি কথা কোৱাটো বন্ধ কৰোঁ, তেতিয়াহে আমি প্ৰকৃততে শুনিবলৈ আৰম্ভ কৰোঁ।</p>
+    </div>
+  </div>
+
+  <!-- ============ সমাজ চিন্তা ============ -->
+  <div class="section-block" id="society">
+    <div class="section-head">
+      <h2>সমাজ চিন্তা</h2>
+      <span class="count">১ টা লেখা</span>
+    </div>
+    <div class="reflect-piece society">
+      <span class="tag">সমাজ চিন্তা</span>
+      <h3>প্ৰতিবেশীৰ প্ৰশ্ন</h3>
+      <div class="meta">পঢ়িবলৈ ৩ মিনিট</div>
+      <p>শ্বহৰীয়া জীৱনত আমি হাজাৰ মানুহৰ মাজত থাকিও প্ৰায়ে অকলশৰীয়া অনুভৱ কৰোঁ। কাষৰ ফ্লেটৰ মানুহজনৰ নামটোও নাজানো, অথচ তেওঁৰ ঘৰৰ সোৰ গোটেই ৰাতি শুনি থাকোঁ। সমাজ চিন্তাৰ প্ৰথম খোজটো আজিও সহজ — আশে-পাশে চোৱা, আৰু প্ৰকৃততে দেখা।</p>
+    </div>
+  </div>
+
+  <!-- ============ প্ৰকৃতি ============ -->
+  <div class="section-block" id="nature">
+    <div class="section-head">
+      <h2>প্ৰকৃতি</h2>
+      <span class="count">১ টা লেখা</span>
+    </div>
+    <div class="reflect-piece nature">
+      <span class="tag">প্ৰকৃতি</span>
+      <h3>নদীৰ কাষত সময়</h3>
+      <div class="meta">পঢ়িবলৈ ২ মিনিট</div>
+      <p>নদীখনে কেতিয়াও খৰখেদা নকৰে, তথাপিও ই কেতিয়াও ৰৈ নাথাকে। আমি হয়তো এইখিনিতেই নদীৰ পৰা আটাইতকৈ ডাঙৰ শিক্ষাটো লব পাৰোঁ — লক্ষ্যৰ ফালে আগবাঢ়ি যোৱাৰ লগে লগে, পথৰ প্ৰতিটো বাঁকতো উপভোগ কৰিব জনাটো।</p>
+    </div>
+  </div>
+
+  <!-- ============ আত্ম-উপলব্ধি ============ -->
+  <div class="section-block" id="self">
+    <div class="section-head">
+      <h2>আত্ম-উপলব্ধি</h2>
+      <span class="count">১ টা লেখা</span>
+    </div>
+    <div class="reflect-piece self">
+      <span class="tag">আত্ম-উপলব্ধি</span>
+      <h3>নিজৰ মাজত হেৰোৱা যাত্ৰা</h3>
+      <div class="meta">পঢ়িবলৈ ৩ মিনিট</div>
+      <p>আমি প্ৰায়ে আনৰ চকুৰে নিজকে জুখিবলৈ চেষ্টা কৰোঁ — কিন্তু প্ৰকৃত আত্ম-উপলব্ধি আৰম্ভ হয় তেতিয়াহে, যেতিয়া আমি সেই তুলনাটো বন্ধ কৰোঁ। নিজৰ মাজলৈ উভতি যোৱাটো কোনো এক গন্তব্য নহয়, ই এক চলি থকা যাত্ৰা — য'ত প্ৰতিদিনে নতুনকৈ নিজকে চিনি পোৱাৰ সুযোগ থাকে।</p>
+    </div>
   </div>
 
 </div>
@@ -422,7 +737,7 @@
 </footer>
 
 <button id="theme-toggle" class="theme-toggle">
-  🌙 Dark Mode
+  🌙 ডাৰ্ক মোড
 </button>
 
 <script>
@@ -442,15 +757,15 @@
       document.body.classList.contains('dark-mode');
 
     themeToggle.textContent = darkModeEnabled
-      ? '☀️ Light Mode'
-      : '🌙 Dark Mode';
+      ? '☀️ লাইট মোড'
+      : '🌙 ডাৰ্ক মোড';
 
     localStorage.setItem('darkMode', darkModeEnabled);
   });
 
   if (localStorage.getItem('darkMode') === 'true') {
     document.body.classList.add('dark-mode');
-    themeToggle.textContent = '☀️ Light Mode';
+    themeToggle.textContent = '☀️ লাইট মোড';
   }
 </script>
 
