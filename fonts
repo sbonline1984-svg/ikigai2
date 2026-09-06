@@ -1,4 +1,7 @@
-ikigai2/
-├── index.html
-└── fonts/
-    └── Samarkan-Normal.ttf
+@font-face {
+  font-family: 'Samarkan Normal';
+  src: url('./fonts/Samarkan-Normal.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
